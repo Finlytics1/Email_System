@@ -20,23 +20,20 @@
   "volatility": 2
  },
  "2026-10-01": {
-  "agent": 52,
-  "algorithmic trading": 1,
-  "alignment": 5,
+  "agent": 50,
+  "alignment": 6,
   "data protection": 1,
   "derivatives": 1,
-  "differential privacy": 3,
+  "differential privacy": 1,
   "diffusion model": 2,
-  "federated learning": 7,
-  "foundation model": 6,
-  "large language model": 13,
-  "model inversion": 1,
-  "monte carlo": 1,
+  "federated learning": 6,
+  "foundation model": 5,
+  "large language model": 11,
   "portfolio optimization": 2,
-  "privacy-preserving": 3,
-  "reasoning": 26,
-  "reinforcement learning": 15,
-  "synthetic data": 5,
+  "privacy-preserving": 1,
+  "reasoning": 21,
+  "reinforcement learning": 14,
+  "synthetic data": 3,
   "volatility": 2
  }
 }
