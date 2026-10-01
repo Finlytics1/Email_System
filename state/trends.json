@@ -18,5 +18,25 @@
   "reinforcement learning": 10,
   "synthetic data": 2,
   "volatility": 2
+ },
+ "2026-10-01": {
+  "agent": 52,
+  "algorithmic trading": 1,
+  "alignment": 5,
+  "data protection": 1,
+  "derivatives": 1,
+  "differential privacy": 3,
+  "diffusion model": 2,
+  "federated learning": 7,
+  "foundation model": 6,
+  "large language model": 13,
+  "model inversion": 1,
+  "monte carlo": 1,
+  "portfolio optimization": 2,
+  "privacy-preserving": 3,
+  "reasoning": 26,
+  "reinforcement learning": 15,
+  "synthetic data": 5,
+  "volatility": 2
  }
 }
