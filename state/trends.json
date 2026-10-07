@@ -107,5 +107,23 @@
   "reinforcement learning": 7,
   "synthetic data": 1,
   "volatility": 1
+ },
+ "2026-10-07": {
+  "agent": 44,
+  "alignment": 10,
+  "anonymization": 1,
+  "deep hedging": 1,
+  "derivatives": 1,
+  "differential privacy": 1,
+  "diffusion model": 2,
+  "federated learning": 4,
+  "foundation model": 6,
+  "large language model": 16,
+  "model inversion": 1,
+  "monte carlo": 1,
+  "privacy-preserving": 5,
+  "reasoning": 20,
+  "reinforcement learning": 10,
+  "synthetic data": 2
  }
 }
