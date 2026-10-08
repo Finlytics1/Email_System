@@ -125,5 +125,21 @@
   "reasoning": 20,
   "reinforcement learning": 10,
   "synthetic data": 2
+ },
+ "2026-10-08": {
+  "agent": 32,
+  "alignment": 9,
+  "anonymization": 1,
+  "diffusion model": 3,
+  "federated learning": 3,
+  "foundation model": 7,
+  "large language model": 17,
+  "membership inference": 1,
+  "monte carlo": 1,
+  "physics-informed": 1,
+  "reasoning": 17,
+  "reinforcement learning": 12,
+  "synthetic data": 4,
+  "volatility": 1
  }
 }
