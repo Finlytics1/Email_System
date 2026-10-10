@@ -159,5 +159,21 @@
   "reasoning": 23,
   "reinforcement learning": 8,
   "synthetic data": 2
+ },
+ "2026-10-10": {
+  "agent": 34,
+  "alignment": 10,
+  "data protection": 5,
+  "differential privacy": 1,
+  "diffusion model": 1,
+  "federated learning": 1,
+  "foundation model": 4,
+  "gdpr": 4,
+  "large language model": 14,
+  "membership inference": 1,
+  "privacy-preserving": 3,
+  "reasoning": 18,
+  "reinforcement learning": 7,
+  "synthetic data": 1
  }
 }
