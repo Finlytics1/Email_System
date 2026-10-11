@@ -175,5 +175,16 @@
   "reasoning": 18,
   "reinforcement learning": 7,
   "synthetic data": 1
+ },
+ "2026-10-11": {
+  "agent": 30,
+  "alignment": 7,
+  "data protection": 4,
+  "foundation model": 2,
+  "gdpr": 3,
+  "large language model": 11,
+  "privacy-preserving": 1,
+  "reasoning": 13,
+  "reinforcement learning": 5
  }
 }
