@@ -186,5 +186,18 @@
   "privacy-preserving": 1,
   "reasoning": 13,
   "reinforcement learning": 5
+ },
+ "2026-10-12": {
+  "agent": 25,
+  "alignment": 2,
+  "data protection": 1,
+  "diffusion model": 5,
+  "foundation model": 8,
+  "gdpr": 1,
+  "large language model": 9,
+  "monte carlo": 3,
+  "physics-informed": 1,
+  "reasoning": 15,
+  "reinforcement learning": 7
  }
 }
