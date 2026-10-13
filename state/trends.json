@@ -199,5 +199,14 @@
   "physics-informed": 1,
   "reasoning": 15,
   "reinforcement learning": 7
+ },
+ "2026-10-13": {
+  "agent": 11,
+  "alignment": 3,
+  "foundation model": 3,
+  "large language model": 7,
+  "monte carlo": 2,
+  "reasoning": 15,
+  "reinforcement learning": 2
  }
 }
