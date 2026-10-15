@@ -49,6 +49,11 @@
  "https://arxiv.org/abs/2610.17732": "2026-10-14",
  "https://arxiv.org/abs/2610.18486": "2026-10-14",
  "https://arxiv.org/abs/2610.18807": "2026-10-14",
+ "https://arxiv.org/abs/2610.19254": "2026-10-15",
+ "https://arxiv.org/abs/2610.20041": "2026-10-15",
+ "https://arxiv.org/abs/2610.20075": "2026-10-15",
+ "https://arxiv.org/abs/2610.20264": "2026-10-15",
+ "https://arxiv.org/abs/2610.20560": "2026-10-15",
  "https://huggingface.co/papers/2501.09223": "2026-10-10",
  "https://huggingface.co/papers/2605.22949": "2026-10-11",
  "https://huggingface.co/papers/2609.31847": "2026-09-30",
@@ -94,6 +99,8 @@
  "https://huggingface.co/papers/2610.13361": "2026-10-13",
  "https://huggingface.co/papers/2610.16811": "2026-10-14",
  "https://huggingface.co/papers/2610.17953": "2026-10-14",
+ "https://huggingface.co/papers/2610.19698": "2026-10-15",
+ "https://huggingface.co/papers/2610.19789": "2026-10-15",
  "https://www.edpb.europa.eu/news/dutch-dpa-fines-uber-eur-824-990-000-for-unlawful-automated-decision-making-and-insufficient_en": "2026-10-11",
  "https://www.edpb.europa.eu/news/edpb-publishes-statement-on-the-data-protection-challenges-of-smart-glasses_en": "2026-10-14",
  "https://www.edpb.europa.eu/news/hellenic-dpa-decision-on-a-data-breach-involving-eetaa-sa-as-processor-for-the-ministry-of_en": "2026-10-11",
@@ -104,5 +111,6 @@
  "https://www.edpb.europa.eu/news/italian-dpa-fines-wind-tre-eur-16-700-000-for-unlawful-telemarketing-and-data-protection_en": "2026-10-12",
  "https://www.edpb.europa.eu/news/swedish-dpa-fines-miljodata-i-karlskrona-approximately-eur-160-000-for-insufficient-technical_en": "2026-10-11",
  "https://www.eff.org/deeplinks/2026/09/hey-siri-how-do-i-limit-ai-data-access-effector-3817": "2026-10-01",
- "https://www.eff.org/deeplinks/2026/10/court-agrees-eff-utahs-vpn-law-demands-technical-impossibility": "2026-10-04"
+ "https://www.eff.org/deeplinks/2026/10/court-agrees-eff-utahs-vpn-law-demands-technical-impossibility": "2026-10-04",
+ "https://www.eff.org/deeplinks/2026/10/dhs-inspector-general-finds-tsa-not-properly-safeguarding-passenger-facial": "2026-10-15"
 }
