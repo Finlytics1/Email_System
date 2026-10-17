@@ -263,5 +263,18 @@
   "reasoning": 21,
   "reinforcement learning": 23,
   "synthetic data": 3
+ },
+ "2026-10-17": {
+  "agent": 39,
+  "alignment": 5,
+  "differential privacy": 1,
+  "federated learning": 3,
+  "foundation model": 2,
+  "large language model": 9,
+  "monte carlo": 1,
+  "privacy-preserving": 3,
+  "reasoning": 15,
+  "reinforcement learning": 15,
+  "synthetic data": 3
  }
 }
