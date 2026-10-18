@@ -276,5 +276,15 @@
   "reasoning": 15,
   "reinforcement learning": 15,
   "synthetic data": 3
+ },
+ "2026-10-18": {
+  "agent": 32,
+  "alignment": 5,
+  "foundation model": 1,
+  "large language model": 8,
+  "monte carlo": 1,
+  "reasoning": 12,
+  "reinforcement learning": 11,
+  "synthetic data": 1
  }
 }
