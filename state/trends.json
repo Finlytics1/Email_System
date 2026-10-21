@@ -316,5 +316,24 @@
   "reinforcement learning": 10,
   "synthetic data": 3,
   "volatility": 2
+ },
+ "2026-10-21": {
+  "agent": 37,
+  "alignment": 7,
+  "differential privacy": 5,
+  "diffusion model": 6,
+  "federated learning": 5,
+  "foundation model": 5,
+  "large language model": 12,
+  "membership inference": 1,
+  "model inversion": 1,
+  "physics-informed": 1,
+  "portfolio optimization": 1,
+  "privacy attack": 2,
+  "privacy-preserving": 5,
+  "reasoning": 18,
+  "reinforcement learning": 4,
+  "synthetic data": 2,
+  "volatility": 1
  }
 }
