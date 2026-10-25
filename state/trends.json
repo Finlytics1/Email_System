@@ -382,5 +382,15 @@
   "reasoning": 13,
   "reinforcement learning": 4,
   "synthetic data": 1
+ },
+ "2026-10-25": {
+  "agent": 24,
+  "alignment": 3,
+  "diffusion model": 3,
+  "foundation model": 2,
+  "large language model": 7,
+  "reasoning": 11,
+  "reinforcement learning": 2,
+  "volatility": 1
  }
 }
