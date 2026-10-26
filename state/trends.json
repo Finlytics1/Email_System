@@ -392,5 +392,18 @@
   "reasoning": 11,
   "reinforcement learning": 2,
   "volatility": 1
+ },
+ "2026-10-26": {
+  "agent": 23,
+  "alignment": 4,
+  "differential privacy": 1,
+  "diffusion model": 2,
+  "federated learning": 2,
+  "foundation model": 4,
+  "large language model": 12,
+  "privacy-preserving": 1,
+  "reasoning": 15,
+  "reinforcement learning": 10,
+  "synthetic data": 1
  }
 }
