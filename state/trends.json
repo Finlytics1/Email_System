@@ -405,5 +405,21 @@
   "reasoning": 15,
   "reinforcement learning": 10,
   "synthetic data": 1
+ },
+ "2026-10-27": {
+  "agent": 51,
+  "alignment": 8,
+  "data leakage": 2,
+  "data protection": 1,
+  "differential privacy": 1,
+  "diffusion model": 1,
+  "federated learning": 3,
+  "foundation model": 4,
+  "large language model": 21,
+  "physics-informed": 1,
+  "reasoning": 22,
+  "reinforcement learning": 15,
+  "synthetic data": 2,
+  "volatility": 2
  }
 }
