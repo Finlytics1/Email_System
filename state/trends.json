@@ -421,5 +421,29 @@
   "reinforcement learning": 15,
   "synthetic data": 2,
   "volatility": 2
+ },
+ "2026-10-28": {
+  "agent": 47,
+  "algorithmic trading": 1,
+  "alignment": 4,
+  "anonymization": 1,
+  "data leakage": 1,
+  "data protection": 2,
+  "derivatives": 2,
+  "diffusion model": 2,
+  "federated learning": 2,
+  "foundation model": 3,
+  "gdpr": 1,
+  "large language model": 21,
+  "membership inference": 1,
+  "monte carlo": 2,
+  "option pricing": 1,
+  "physics-informed": 2,
+  "privacy-preserving": 1,
+  "reasoning": 22,
+  "reinforcement learning": 17,
+  "risk model": 1,
+  "synthetic data": 1,
+  "volatility": 1
  }
 }
