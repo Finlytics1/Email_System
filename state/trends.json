@@ -476,5 +476,17 @@
   "reinforcement learning": 8,
   "synthetic data": 2,
   "volatility": 1
+ },
+ "2026-10-31": {
+  "agent": 31,
+  "alignment": 4,
+  "diffusion model": 2,
+  "federated learning": 3,
+  "foundation model": 5,
+  "large language model": 8,
+  "model inversion": 1,
+  "privacy-preserving": 2,
+  "reasoning": 7,
+  "reinforcement learning": 7
  }
 }
