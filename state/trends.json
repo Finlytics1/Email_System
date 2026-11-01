@@ -488,5 +488,14 @@
   "privacy-preserving": 2,
   "reasoning": 7,
   "reinforcement learning": 7
+ },
+ "2026-11-01": {
+  "agent": 26,
+  "alignment": 2,
+  "diffusion model": 2,
+  "foundation model": 4,
+  "large language model": 7,
+  "reasoning": 6,
+  "reinforcement learning": 7
  }
 }
