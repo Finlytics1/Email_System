@@ -497,5 +497,15 @@
   "large language model": 7,
   "reasoning": 6,
   "reinforcement learning": 7
+ },
+ "2026-11-02": {
+  "agent": 27,
+  "alignment": 5,
+  "diffusion model": 1,
+  "foundation model": 7,
+  "large language model": 10,
+  "reasoning": 16,
+  "reinforcement learning": 14,
+  "synthetic data": 1
  }
 }
