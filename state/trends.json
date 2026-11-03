@@ -507,5 +507,24 @@
   "reasoning": 16,
   "reinforcement learning": 14,
   "synthetic data": 1
+ },
+ "2026-11-03": {
+  "agent": 44,
+  "alignment": 7,
+  "black-scholes": 1,
+  "derivatives": 2,
+  "differential privacy": 5,
+  "diffusion model": 1,
+  "federated learning": 11,
+  "foundation model": 4,
+  "large language model": 13,
+  "membership inference": 1,
+  "monte carlo": 1,
+  "physics-informed": 2,
+  "privacy-preserving": 2,
+  "reasoning": 18,
+  "reinforcement learning": 12,
+  "synthetic data": 2,
+  "volatility": 1
  }
 }
