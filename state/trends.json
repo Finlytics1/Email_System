@@ -579,5 +579,15 @@
   "reinforcement learning": 13,
   "synthetic data": 1,
   "volatility": 3
+ },
+ "2026-11-07": {
+  "agent": 30,
+  "alignment": 2,
+  "diffusion model": 2,
+  "foundation model": 7,
+  "large language model": 7,
+  "reasoning": 13,
+  "reinforcement learning": 10,
+  "volatility": 1
  }
 }
