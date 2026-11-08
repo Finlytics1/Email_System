@@ -589,5 +589,14 @@
   "reasoning": 13,
   "reinforcement learning": 10,
   "volatility": 1
+ },
+ "2026-11-08": {
+  "agent": 24,
+  "alignment": 1,
+  "diffusion model": 2,
+  "foundation model": 7,
+  "large language model": 5,
+  "reasoning": 10,
+  "reinforcement learning": 8
  }
 }
