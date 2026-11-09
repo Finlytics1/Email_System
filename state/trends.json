@@ -598,5 +598,17 @@
   "large language model": 5,
   "reasoning": 10,
   "reinforcement learning": 8
+ },
+ "2026-11-09": {
+  "agent": 30,
+  "alignment": 3,
+  "diffusion model": 1,
+  "foundation model": 1,
+  "large language model": 8,
+  "monte carlo": 1,
+  "physics-informed": 1,
+  "reasoning": 8,
+  "reinforcement learning": 4,
+  "synthetic data": 1
  }
 }
