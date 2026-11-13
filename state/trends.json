@@ -644,5 +644,23 @@
   "monte carlo": 1,
   "reasoning": 20,
   "reinforcement learning": 10
+ },
+ "2026-11-13": {
+  "agent": 39,
+  "algorithmic trading": 1,
+  "alignment": 5,
+  "anonymization": 1,
+  "data protection": 1,
+  "diffusion model": 3,
+  "federated learning": 4,
+  "foundation model": 9,
+  "large language model": 13,
+  "monte carlo": 3,
+  "physics-informed": 1,
+  "portfolio optimization": 2,
+  "privacy-preserving": 1,
+  "reasoning": 11,
+  "reinforcement learning": 9,
+  "synthetic data": 3
  }
 }
