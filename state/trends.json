@@ -662,5 +662,20 @@
   "reasoning": 11,
   "reinforcement learning": 9,
   "synthetic data": 3
+ },
+ "2026-11-14": {
+  "agent": 36,
+  "alignment": 3,
+  "diffusion model": 3,
+  "federated learning": 1,
+  "foundation model": 7,
+  "large language model": 10,
+  "monte carlo": 2,
+  "physics-informed": 1,
+  "portfolio optimization": 1,
+  "privacy-preserving": 1,
+  "reasoning": 11,
+  "reinforcement learning": 7,
+  "synthetic data": 2
  }
 }
