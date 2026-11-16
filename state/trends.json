@@ -685,5 +685,17 @@
   "foundation model": 3,
   "large language model": 3,
   "reasoning": 6
+ },
+ "2026-11-16": {
+  "agent": 32,
+  "alignment": 6,
+  "foundation model": 8,
+  "large language model": 8,
+  "monte carlo": 2,
+  "physics-informed": 2,
+  "privacy-preserving": 1,
+  "reasoning": 9,
+  "reinforcement learning": 6,
+  "volatility": 1
  }
 }
