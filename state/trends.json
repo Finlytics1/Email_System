@@ -697,5 +697,22 @@
   "reasoning": 9,
   "reinforcement learning": 6,
   "volatility": 1
+ },
+ "2026-11-17": {
+  "agent": 37,
+  "alignment": 7,
+  "black-scholes": 1,
+  "derivatives": 1,
+  "diffusion model": 1,
+  "federated learning": 1,
+  "foundation model": 4,
+  "large language model": 13,
+  "membership inference": 2,
+  "monte carlo": 3,
+  "physics-informed": 4,
+  "reasoning": 14,
+  "reinforcement learning": 10,
+  "synthetic data": 1,
+  "volatility": 1
  }
 }
