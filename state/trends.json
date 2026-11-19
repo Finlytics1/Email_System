@@ -728,5 +728,19 @@
   "reasoning": 17,
   "reinforcement learning": 12,
   "volatility": 1
+ },
+ "2026-11-19": {
+  "agent": 37,
+  "alignment": 6,
+  "diffusion model": 2,
+  "federated learning": 5,
+  "foundation model": 6,
+  "large language model": 21,
+  "physics-informed": 1,
+  "privacy-preserving": 3,
+  "reasoning": 17,
+  "reinforcement learning": 10,
+  "synthetic data": 2,
+  "volatility": 3
  }
 }
