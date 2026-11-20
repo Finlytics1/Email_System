@@ -90,12 +90,27 @@ ARXIV_KEYWORD_CATS = ["cs.LG", "cs.AI", "cs.CR", "stat.ML", "stat.AP", "cs.CY", 
 ARXIV_FINANCE_CATS = ["q-fin.CP", "q-fin.MF", "q-fin.ST", "q-fin.RM", "q-fin.PM",
                       "q-fin.PR", "q-fin.GN", "q-fin.TR"]
 
-# Email look. Pick one: "paper" (editorial, cream + serif), "dark" (dark mode),
-# "midnight" (white cards under a navy header).
-THEME = "paper"
+# Email look. Pick one: "analog" (typewriter), "paper" (editorial, cream + serif),
+# "dark" (dark mode), "midnight" (white cards under a navy header).
+THEME = "analog"
 SANS = "-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif"
 SERIF = "Georgia,'Times New Roman',Times,serif"
+MONO = "'Courier New',Courier,'Lucida Console',monospace"
 THEMES = {
+    "analog": {
+        "scheme": "light", "page": "#e8e2d4", "body_bg": "#f6f1e3", "body_border": "#cfc6b0",
+        "header_bg": "#f6f1e3",
+        "header_extra": "border:1px solid #cfc6b0;border-bottom:2px dashed #2b2622;",
+        "kicker": "#b3261e", "title": "#2b2622", "sub": "#6b6257",
+        "ink": "#2b2622", "text": "#3b352e", "muted": "#7a7064", "line": "#bdb39c",
+        "item_rule": "1px dashed #bdb39c",
+        "card_bg": "#f6f1e3", "card_border": "#cfc6b0", "cards": False, "pills": False,
+        "section_size": "17px", "section_rule": "2px dashed #2b2622",
+        "trend_bg": "#efe8d6", "trend_extra": "border:1px dashed #b3261e;", "trend_title": "#b3261e",
+        "head_font": MONO, "body_font": MONO, "radius": "0",
+        "colors": {"Fraud detection & AML": "#b3261e", "Insurance pricing": "#2e5e3e",
+                   "Stock & asset pricing": "#24426e", "Credit risk": "#8a5a12"},
+    },
     "paper": {
         "scheme": "light", "page": "#efe9dd", "body_bg": "#fbf8f2", "body_border": "#e2d8c6",
         "header_bg": "#fbf8f2", "header_extra": "border:1px solid #e2d8c6;border-bottom:3px double #1c1a17;",
@@ -464,7 +479,7 @@ def render(picked, oneliners, trend, today):
                    f"border-left:4px solid {c};border-radius:{radius}")
             pad, gap = "16px 18px", "14px"
         else:  # editorial: no boxes, just a rule under each item
-            box = f"border-bottom:1px solid {T['line']}"
+            box = f"border-bottom:{T.get('item_rule', '1px solid ' + T['line'])}"
             pad, gap = "16px 2px 18px", "4px"
         return f"""
 <tr><td style="padding:0 0 {gap} 0">
