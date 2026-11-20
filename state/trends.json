@@ -742,5 +742,12 @@
   "reinforcement learning": 10,
   "synthetic data": 2,
   "volatility": 3
+ },
+ "2026-11-20": {
+  "equity": 2,
+  "lending": 1,
+  "stock price": 1,
+  "stock return": 1,
+  "volatility": 2
  }
 }
