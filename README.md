@@ -1,39 +1,52 @@
-# Research digest
+# Computational finance digest
 
-A daily email with about 8 items (10-30 min read) on AI, computational finance, privacy, and your bachelor project (membership inference and neural-network option pricing). It is sent to your main Gmail.
+A daily email with about 6 new research papers (a 20-minute read) on machine learning in finance:
 
-## Setup (about 10 minutes)
+- **Fraud detection & AML**: card and payment fraud, anti-money laundering, transaction monitoring
+- **Insurance pricing**: actuarial models, claims, GLMs vs. machine learning, fair pricing
+- **Stock & asset pricing**: asset pricing, factor models, option pricing, volatility
+- **Credit risk**: credit scoring, probability of default, loan default
 
-1. **Create a GitHub repo** (private is fine) and upload everything in this folder, keeping the `.github/workflows/digest.yml` path.
-2. **Create a Gmail App Password** for your main Gmail. Turn on 2-step verification first, then go to Google Account > Security > App passwords. The digest is sent from and to the same address, so no second account is needed.
-3. **Add repo secrets** (Settings > Secrets and variables > Actions > New repository secret):
-   - `GMAIL_ADDRESS`: your main Gmail address
+Papers come from arXiv (finance and machine learning sections), Hugging Face Daily Papers and two finance feeds (Quantocracy, BIS). Each paper is scored against keywords for these topics, and the email is sent to your Gmail in a plain, simple layout.
+
+## Setup
+
+1. Create a GitHub repo and upload everything in this folder, keeping the `.github/workflows/digest.yml` path.
+2. Create a Gmail App Password: turn on 2-step verification, then go to Google Account > Security > App passwords.
+3. Add repo secrets (Settings > Secrets and variables > Actions > New repository secret):
+   - `GMAIL_ADDRESS`: your Gmail address
    - `GMAIL_APP_PASSWORD`: the 16-character app password
-   - `TO_EMAIL`: your main Gmail address again
-   - `ANTHROPIC_API_KEY`: *optional*. If set, each item gets a one-sentence "why it matters" instead of an abstract excerpt.
-4. **Run it once manually:** Actions tab > "Daily research digest" > Run workflow.
-5. **Check your inbox.** Because it is sent to yourself, it should land in the inbox. If not, look in Spam and mark it "not spam". You can also create a filter that adds a "Digest" label to emails with the subject "Research digest".
+   - `TO_EMAIL`: where to send the digest (usually the same Gmail address)
+   - `ANTHROPIC_API_KEY`: optional. If set, each paper gets a one-sentence "why it matters" instead of an abstract excerpt.
+4. Run it once: Actions tab > "Daily research digest" > Run workflow.
 
-After that it runs every day at 05:00 UTC (06:00 or 07:00 Danish time). GitHub can delay scheduled runs by up to about an hour.
+After that it runs every day at 05:00 UTC. GitHub often starts scheduled runs late, sometimes by several hours.
+
+Tip: the subject starts with "Computational finance", so you can make a Gmail filter on that text to label the emails.
 
 ## Test locally
 
-```bash
+```
 pip install -r requirements.txt
 DRY_RUN=1 python digest.py     # prints the digest, sends nothing
 ```
 
-## Tuning
+## Settings
 
-Everything is in the `CONFIG` block at the top of `digest.py`:
+Everything is in the CONFIG block at the top of `digest.py`:
 
-- `READING_MINUTES`: your budget. Items per email is this divided by `MINUTES_PER_ITEM`.
-- `ITEMS_PER_TRACK`: max items per track.
-- `TRACKS`: keywords and weights. The project track has weight 2.0.
-- `RSS_FEEDS`: add or remove news sources. Dead feeds print a warning in the Actions log and are skipped.
+- `READING_MINUTES`: your reading budget. Papers per email = this divided by `MINUTES_PER_ITEM` (20 / 3 = 6).
+- `TRACKS`: the topics. Each has:
+  - `weight`: how much you care about it
+  - `max_items`: the most papers from this topic per email
+  - `keep_one`: always keep the best paper from this topic, even if the email is full
+  - `requires`: a paper must mention one of these words to count for the topic
+  - `search`: phrases used to search arXiv
+  - `keywords`: phrases used to score papers (3 points in the title, 1 in the abstract)
+- `RSS_FEEDS`: extra sources. Dead feeds print a warning in the Actions log and are skipped.
 
 ## Files
 
 - `digest.py`: the script
-- `.github/workflows/digest.yml`: daily schedule
-- `state/`: created automatically. Holds `seen.json` (avoids repeats) and `trends.json` (keyword counts for the trend line). Committed by the workflow.
+- `.github/workflows/digest.yml`: the daily schedule
+- `state/`: created automatically. `seen.json` stops papers being sent twice, and `trends.json` holds keyword counts for the trend line. Committed by the workflow.

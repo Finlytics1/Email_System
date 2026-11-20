@@ -1,6 +1,6 @@
 """
-Daily research digest: ML in finance (fraud detection, insurance pricing, stock/asset
-pricing, credit risk). About 6 papers, sized for a 20-minute read.
+Daily computational finance digest: ML in finance (fraud detection, insurance pricing,
+stock/asset pricing, credit risk). About 6 papers, sized for a 20-minute read.
 Fetches from arXiv, Hugging Face Daily Papers and a few RSS feeds, scores items against
 keyword lists, and emails a short, simple digest.
 
@@ -383,10 +383,10 @@ def render(picked, oneliners, trend, today):
     font = "font-family:Arial,Helvetica,sans-serif;"
     h = [f'<div style="{font}max-width:600px;margin:0 auto;padding:16px;color:#222;'
          f'font-size:15px;line-height:1.5">',
-         f'<h2 style="margin:0 0 4px">Research digest</h2>',
+         f'<h2 style="margin:0 0 4px">Computational finance</h2>',
          f'<div style="color:#777;margin-bottom:8px">{nice_date} &middot; {total} papers &middot; '
          f'about {minutes} min</div>']
-    text = [f"Research digest - {nice_date}", f"{total} papers, about {minutes} min", ""]
+    text = [f"Computational finance - {nice_date}", f"{total} papers, about {minutes} min", ""]
 
     for track, lst in picked.items():
         if not lst:
@@ -455,7 +455,7 @@ def main():
     oneliners = llm_one_liners(picked)
     html_body, text_body, minutes = render(picked, oneliners, trend, today)
     n = sum(len(v) for v in picked.values())
-    subject = f"Research digest · ML in finance · {now:%d %b} · {n} papers, ~{minutes} min"
+    subject = f"Computational finance · {now:%d %b} · {n} papers, ~{minutes} min"
 
     if DRY_RUN:
         print(text_body)
