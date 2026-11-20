@@ -1,5 +1,6 @@
 """
-Daily research digest: AI, Computational Finance and Privacy.
+Daily research digest: ML in finance (fraud, insurance pricing, stock/asset pricing,
+credit risk), with small side sections for AI and privacy.
 Fetches from arXiv, Hugging Face Daily Papers and a few RSS feeds, scores items against
 keyword lists, and emails a short digest sized for a 10-30 minute morning read.
 
@@ -11,6 +12,7 @@ import os
 import re
 import smtplib
 import ssl
+import time
 from calendar import timegm
 from datetime import datetime, timedelta, timezone
 from email.mime.multipart import MIMEMultipart
@@ -22,44 +24,86 @@ import requests
 
 # =============================== CONFIG ===============================
 LOOKBACK_DAYS = 3            # 3 covers weekends; already-seen items are skipped anyway
-READING_MINUTES = 25         # your reading budget (10-30)
+READING_MINUTES = 30         # your reading budget (10-30) -> about 10 items
 MINUTES_PER_ITEM = 3         # rough time per item
-ITEMS_PER_TRACK = 3          # max per track
 SUMMARY_MAX_CHARS = 280      # keep summaries short
 MIN_SCORE = 3                # ignore weak matches
 FEED_BONUS = 2               # lets blog/news items compete with the many papers
 STATE_DIR = Path("state")
 
-# keywords, and a weight for how much you care about the track
+# Each track:
+#   weight      how much you care (finance tracks > side tracks)
+#   max_items   cap per track, so one busy topic can't fill the email
+#   keep_one    if True, the best item survives the reading-budget trim
+#   requires    the text must contain at least one of these words, otherwise the
+#               track doesn't score at all (stops generic ML papers sneaking in)
+#   keywords    phrases scored 3 if in the title, 1 if only in the abstract
 TRACKS = {
-    "Computational finance": {
-        "weight": 1.0,
+    "Fraud detection & AML": {
+        "weight": 1.3, "max_items": 3, "keep_one": True,
+        "requires": ["fraud", "laundering", "aml", "suspicious", "scam"],
+        "search": ["fraud detection", "financial fraud", "money laundering", "transaction fraud"],
         "keywords": [
-            "option pricing", "deep hedging", "monte carlo", "neural sde",
-            "volatility", "risk model", "portfolio optimization", "derivatives",
-            "algorithmic trading", "market simulation", "neural network option pricing",
-            "black-scholes", "physics-informed",
+            "fraud detection", "financial fraud", "credit card fraud", "payment fraud",
+            "transaction fraud", "bank fraud", "anti-money laundering", "money laundering",
+            "suspicious transaction", "transaction monitoring", "anomaly detection",
+            "graph neural network", "imbalanced", "explainab", "fraud",
+        ],
+    },
+    "Insurance pricing": {
+        "weight": 1.2, "max_items": 3, "keep_one": True,
+        "requires": ["insurance", "insurer", "actuarial", "premium", "policyholder", "claim"],
+        "search": ["insurance pricing", "actuarial", "insurance claims", "non-life insurance"],
+        "keywords": [
+            "insurance pricing", "premium", "actuarial", "claim frequency", "claim severity",
+            "claims", "tweedie", "generalized linear model", "glm", "gradient boosting",
+            "telematics", "mortality", "reserving", "fair pricing", "discrimination-free",
+            "insurance",
+        ],
+    },
+    "Stock & asset pricing": {
+        "weight": 1.1, "max_items": 3, "keep_one": True,
+        "requires": ["stock", "equit", "asset pricing", "option", "volatility",
+                     "portfolio", "return", "market", "derivative"],
+        "search": ["asset pricing", "stock return", "option pricing", "stock price prediction"],
+        "keywords": [
+            "asset pricing", "cross-section of returns", "factor model", "stock return",
+            "stock price", "equity", "option pricing", "deep hedging", "volatility",
+            "implied volatility", "neural sde", "black-scholes", "derivatives",
+            "portfolio optimization", "market microstructure", "limit order book",
+            "risk premium",
+        ],
+    },
+    "Credit risk": {
+        "weight": 1.0, "max_items": 2, "keep_one": False,
+        "requires": ["credit", "default", "loan", "borrower", "lending"],
+        "search": ["credit risk", "credit scoring", "loan default", "probability of default"],
+        "keywords": [
+            "credit risk", "credit scoring", "default prediction", "probability of default",
+            "loan default", "credit rating", "lending", "borrower", "explainab",
+        ],
+    },
+    "AI (general)": {
+        "weight": 0.5, "max_items": 1, "keep_one": False,
+        "requires": [],
+        "keywords": [
+            "large language model", "foundation model", "reinforcement learning",
+            "diffusion model", "reasoning", "alignment",
         ],
     },
     "Privacy": {
-        "weight": 1.0,
+        "weight": 0.5, "max_items": 1, "keep_one": False,
+        "requires": [],
         "keywords": [
             "differential privacy", "federated learning", "gdpr", "synthetic data",
-            "data leakage", "privacy-preserving", "data protection", "anonymization",
-            "membership inference", "privacy attack", "model inversion",
-        ],
-    },
-    "AI": {
-        "weight": 1.0,
-        "keywords": [
-            "large language model", "foundation model", "agent",
-            "reinforcement learning", "diffusion model", "reasoning", "alignment",
+            "privacy-preserving", "membership inference", "model inversion", "ai act",
         ],
     },
 }
 
-ARXIV_KEYWORD_CATS = ["cs.LG", "cs.AI", "cs.CR", "stat.ML", "cs.CY"]
-ARXIV_FINANCE_CATS = ["q-fin.CP", "q-fin.MF", "q-fin.ST", "q-fin.RM", "q-fin.PM"]
+ARXIV_KEYWORD_CATS = ["cs.LG", "cs.AI", "cs.CR", "stat.ML", "stat.AP", "cs.CY", "cs.SI"]
+ARXIV_FINANCE_CATS = ["q-fin.CP", "q-fin.MF", "q-fin.ST", "q-fin.RM", "q-fin.PM",
+                      "q-fin.PR", "q-fin.GN", "q-fin.TR"]
 
 # Best-effort feed URLs. Dead feeds are skipped with a warning in the log; fix or remove them.
 RSS_FEEDS = {
@@ -128,10 +172,11 @@ def fetch_arxiv(cutoff):
 
     cats = " OR ".join(f"cat:{c}" for c in ARXIV_KEYWORD_CATS)
     for track in TRACKS.values():
-        kws = " OR ".join(f'all:"{k}"' for k in track["keywords"])
+        terms = track.get("search") or track["keywords"]
+        kws = " OR ".join(f'all:"{k}"' for k in terms)
         queries.append(f"({cats}) AND ({kws})")
 
-    for q in queries:
+    for i, q in enumerate(queries):
         try:
             r = requests.get(
                 "http://export.arxiv.org/api/query",
@@ -139,7 +184,7 @@ def fetch_arxiv(cutoff):
                     "search_query": q,
                     "sortBy": "submittedDate",
                     "sortOrder": "descending",
-                    "max_results": 40,
+                    "max_results": 100 if i == 0 else 40,  # finance feed is busier
                 },
                 headers=UA,
                 timeout=30,
@@ -158,6 +203,7 @@ def fetch_arxiv(cutoff):
                     })
         except Exception as ex:
             print(f"[warn] arXiv query failed: {ex}")
+        time.sleep(3)  # arXiv asks for ~3 s between API calls
     return items
 
 
@@ -213,7 +259,11 @@ def fetch_feeds(cutoff):
 def score_item(item, now):
     title, body = item["title"].lower(), item["summary"].lower()
     best_track, best_score, hits = None, 0.0, set()
+    text = f"{title} {body}"
     for track, cfg in TRACKS.items():
+        req = cfg.get("requires") or []
+        if req and not any(w in text for w in req):
+            continue  # off-topic for this track
         raw = 0
         for kw in cfg["keywords"]:
             in_t, in_b = kw in title, kw in body
@@ -242,16 +292,23 @@ def select(items, now):
     picked = {}
     for t, lst in by_track.items():
         lst.sort(key=lambda x: x["score"], reverse=True)
-        picked[t] = lst[:ITEMS_PER_TRACK]
+        picked[t] = lst[:TRACKS[t]["max_items"]]
 
-    # trim to the reading budget, dropping the lowest scores first
+    # trim to the reading budget, dropping the lowest scores first,
+    # but never the top item of a keep_one track
+    protected = {id(l[0]) for t, l in picked.items() if l and TRACKS[t]["keep_one"]}
     max_items = max(1, READING_MINUTES // MINUTES_PER_ITEM)
     flat = sorted(
         ((it["score"], t, it) for t, l in picked.items() for it in l), key=lambda x: x[0]
     )
-    while len(flat) > max_items:
-        _, t, it = flat.pop(0)
+    total = len(flat)
+    for _, t, it in flat:
+        if total <= max_items:
+            break
+        if id(it) in protected:
+            continue
         picked[t].remove(it)
+        total -= 1
     return picked, all_hits
 
 
@@ -296,8 +353,9 @@ def llm_one_liners(picked):
     ]
     prompt = (
         "For each item write ONE plain-English sentence (max 30 words) saying what it is and "
-        "why it matters to an undergraduate interested in AI, computational finance and data "
-        'privacy. Return only JSON like {"0": "sentence", "1": "sentence"}.\n\n'
+        "why it matters to an AI undergraduate focused on machine learning in finance: fraud "
+        "detection in banks, insurance pricing, stock/asset pricing and credit risk. "
+        'Return only JSON like {"0": "sentence", "1": "sentence"}.\n\n'
         + json.dumps(payload)
     )
     try:
