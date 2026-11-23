@@ -745,5 +745,10 @@
  },
  "2026-11-20": {},
  "2026-11-21": {},
- "2026-11-22": {}
+ "2026-11-22": {},
+ "2026-11-23": {
+  "anti-money laundering": 1,
+  "graph neural network": 1,
+  "money laundering": 1
+ }
 }
