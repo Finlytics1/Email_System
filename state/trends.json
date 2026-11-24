@@ -750,5 +750,10 @@
   "anti-money laundering": 1,
   "graph neural network": 1,
   "money laundering": 1
+ },
+ "2026-11-24": {
+  "claims": 1,
+  "glm": 1,
+  "stock return": 1
  }
 }
