@@ -755,5 +755,12 @@
   "claims": 1,
   "glm": 1,
   "stock return": 1
+ },
+ "2026-11-25": {
+  "black-scholes": 1,
+  "claims": 2,
+  "portfolio optimization": 1,
+  "reserving": 1,
+  "volatility": 3
  }
 }
