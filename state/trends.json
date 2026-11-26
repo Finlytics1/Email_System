@@ -762,5 +762,12 @@
   "portfolio optimization": 1,
   "reserving": 1,
   "volatility": 3
+ },
+ "2026-11-26": {
+  "credit risk": 2,
+  "equity": 1,
+  "factor model": 1,
+  "implied volatility": 1,
+  "volatility": 2
  }
 }
