@@ -769,5 +769,12 @@
   "factor model": 1,
   "implied volatility": 1,
   "volatility": 2
+ },
+ "2026-11-27": {
+  "asset pricing": 1,
+  "borrower": 1,
+  "claims": 1,
+  "factor model": 1,
+  "lending": 1
  }
 }
